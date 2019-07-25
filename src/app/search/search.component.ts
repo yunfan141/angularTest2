@@ -11,14 +11,20 @@ export class SearchComponent implements OnInit {
   searchForm: FormGroup;
   constructor(private fb: FormBuilder, public service: DataService) { }
 
-  ngOnInit() {
-      
+  ngOnInit() {     
     // add corresponding validators
     this.searchForm = this.fb.group({
-      'searchText': [null]
+      'searchText': ['']
     });
 
+    // tslint:disable-next-line:no-unused-expression
+    this.onChanges();
     // write a subsciber/valueChanges function that calls changeSearchText upon value change in the form
+  }
+  onChanges() {
+    this.searchForm.get('searchText').valueChanges.subscribe(value => {
+      this.service.changeSearchText(value);
+    });
   }
 
 }

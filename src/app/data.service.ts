@@ -11,5 +11,6 @@ export class DataService {
 
   changeSearchText(searchText: string) {
     // add data to an observable
+    this.searchTextSource.next(searchText);
   }
 }
