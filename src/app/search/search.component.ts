@@ -17,12 +17,12 @@ export class SearchComponent implements OnInit {
       'searchText': ['']
     });
 
-    // tslint:disable-next-line:no-unused-expression
     this.onChanges();
     // write a subsciber/valueChanges function that calls changeSearchText upon value change in the form
   }
   onChanges() {
     this.searchForm.get('searchText').valueChanges.subscribe(value => {
+      console.log(value);
       this.service.changeSearchText(value);
     });
   }
