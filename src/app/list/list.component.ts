@@ -17,11 +17,27 @@ export class ListComponent implements OnInit {
     { name: "Erica Edwards", age: 25, id: 11145, gender: "Female", location: "Toronto", income: "$2,200,000" }
   ]
 
-  searchCustomersList = {};
+  searchCustomersList = [];
   constructor(private service: DataService) { }
 
   ngOnInit() {
+    this.service.currentSearchText.subscribe(value => {
+      for (let i = 0; i < this.customers.length; i++) {
+        if (this.contains(this.customers[i], value)) {
+            this.searchCustomersList.push(this.customers[i]);
+        }
+      }
+    });
     // complete this function which searches the customer data & adds them to searchCustomersList
   }
+
+  contains(obj, term: string): boolean {
+    for (let key in obj) {
+        if (obj[key].indexOf(term) !== -1) {
+          return true;
+        }
+    }
+    return false;
+}
 
 }

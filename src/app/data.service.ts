@@ -13,4 +13,8 @@ export class DataService {
     // add data to an observable
     this.searchTextSource.next(searchText);
   }
+
+  getcurrentSearchText() {
+    return this.currentSearchText;
+  }
 }

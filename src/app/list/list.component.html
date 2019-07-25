@@ -9,12 +9,12 @@
       <th>Gender</th>
       <th>Income</th>
     </tr>
-    <tr>
-      <td class="col-md-2"></td>
-      <td class="col-md-2"></td>
-      <td class="col-md-2"></td>
-      <td class="col-md-2"></td>
-      <td class="col-md-2"></td>
+    <tr *ngFor="let customer of searchCustomersList">
+      <td class="col-md-2">{{customer.name}}</td>
+      <td class="col-md-2">{{customer.age}}</td>
+      <td class="col-md-2">{{customer.location}}</td>
+      <td class="col-md-2">{{customer.gender}}</td>
+      <td class="col-md-2">{{customer.income}}</td>
     </tr>
   </table>
 </div>
