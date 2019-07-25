@@ -42,7 +42,7 @@ export class ListComponent implements OnInit {
 
   containsString(obj, term: string): boolean {
     for (const key in obj) {
-        if (obj[key].includes(term) !== -1) {
+        if (obj[key].indexOf(term) !== -1) {
           return true;
         }
     }
