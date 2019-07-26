@@ -14,7 +14,4 @@ export class DataService {
     this.searchTextSource.next(searchText);
   }
 
-  // getcurrentSearchText() {
-  //   return this.currentSearchText;
-  // }
 }

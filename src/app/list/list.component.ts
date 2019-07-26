@@ -23,16 +23,19 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.service.currentSearchText.subscribe(value => {
       this.searchCustomersList = [];
-      if (value === 'new') {
-        for (const obj of this.customers) {
-          this.searchCustomersList.push(obj);
-        }
-      }else {
-        for (let i = 0; i < this.customers.length; i++) {
-          if (this.containsString(this.customers[i], value)) {
-              this.searchCustomersList.push(this.customers[i]);
-              console.log(value);
-              console.log(i);
+      if (value != null) {
+        if (value === 'new') {
+          for (const customer of this.customers) {
+            this.searchCustomersList.push(customer);
+          }
+        }else {
+          for (const customer of this.customers) {
+            for (const key in customer) {
+              if (customer[key].toString().indexOf(value) !== -1) {
+                this.searchCustomersList.push(customer);
+                break;
+              }
+            }
           }
         }
       }
@@ -40,13 +43,13 @@ export class ListComponent implements OnInit {
     // complete this function which searches the customer data & adds them to searchCustomersList
   }
 
-  containsString(obj, term: string): boolean {
-    for (const key in obj) {
-        if (obj[key].indexOf(term) !== -1) {
-          return true;
-        }
-    }
-    return false;
-}
+  // containsString(obj, term: string): boolean {
+  //   for (const key in obj) {
+  //       if (obj[key].toString().indexOf(term) !== -1) {
+  //         return true;
+  //       }
+  //   }
+  //   return false;
+  // }
 
 }

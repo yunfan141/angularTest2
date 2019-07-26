@@ -14,7 +14,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {     
     // add corresponding validators
     this.searchForm = this.fb.group({
-      'searchText': ['']
+      'searchText': ['', Validators.required]
     });
 
     this.onChanges();
